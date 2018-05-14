@@ -85,24 +85,12 @@ Please see the snippet of code:
         previous_frame_lines['r_x1']=x1
         previous_frame_lines['r_x2']=x2
 
-
-
-
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
+There are many potential shortcoming with this project for ex what would happen when we pass thru a construction zone, unlear lane markings, overlaped lane markings, bad weather ect.   
 
 ### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+A possible improvement would be to use diffrent light spectrum to better see objects and markings. instead of finding lanes we should define a ROI, a rectangular space whoch varies a) based on speed of the car b) road c) weather c) location etc.  
