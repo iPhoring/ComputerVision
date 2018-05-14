@@ -22,15 +22,15 @@ Please see snippet of pipeline code:
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by to add one think left and one think right lane. Please see the below steps 
 
-**1. Segerate the lines based on their slope to Left Lane(Negative slope) or Right Lane.
-**2. Calculate the a point on the line in this center of the line 
-**3. for left lane, use the point slop function (y-y')=m(x-x') to find top left and bottom left (x1 and x2) points using y1 and y2 as 60% of height and 100% of height 
-**4. Repete this action to find x1, and x2 for right lane. 
-**5. In case of lines containing "NaN" values use the last good known x1 and x2 points.
+* 1. Segerate the lines based on their slope to Left Lane(Negative slope) or Right Lane.
+* 2. Calculate the a point on the line in this center of the line 
+* 3. for left lane, use the point slop function (y-y')=m(x-x') to find top left and bottom left (x1 and x2) points using y1 and y2 as 60% of height and 100% of height 
+* 4. Repete this action to find x1, and x2 for right lane. 
+* 5. In case of lines containing "NaN" values use the last good known x1 and x2 points.
 
 Please see the snippet of code:
 
-for line in lines:
+    for line in lines:
         for x1,y1,x2,y2 in line:
             #cv2.line(img, (x1, y1), (x2, y2), color, thickness)
             if x2==x1:
