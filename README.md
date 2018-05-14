@@ -5,14 +5,10 @@
 When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm. In this project I take very first step to detect lane lines in images using Python and OpenCV.  
 ## Objectives
 The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
+* Make a pipeline that finds lane lines on the road. Please a sample image of a road with lanes.
+[image1]: ./solidWhiteRight.jpg
 
 ---
-
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
