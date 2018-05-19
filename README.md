@@ -107,4 +107,4 @@ There are many potential shortcomings of this project are
 A possible improvement would be to use the different light spectrum to see objects and markings better. Instead of finding lanes we should define an ROI, a rectangular space which varies based on the speed of the car, weather condition, and location, etc.
 
 ### 4. Final Video
-[![Find Lane Lines](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=yHErCYu-f0A)
+[Find Lane Lines](https://www.youtube.com/watch?v=yHErCYu-f0A)
