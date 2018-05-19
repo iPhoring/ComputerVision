@@ -105,3 +105,6 @@ There are many potential shortcomings of this project are
 
 ### 3. Suggest possible improvements to your pipeline
 A possible improvement would be to use the different light spectrum to see objects and markings better. Instead of finding lanes we should define an ROI, a rectangular space which varies based on the speed of the car, weather condition, and location, etc.
+
+### 4. Final Video
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
