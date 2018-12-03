@@ -2,16 +2,24 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 ## Overview
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm. In this project I take very first step to detect lane lines in images using Python and OpenCV.  
+When we drive, we use our eyes to decide where to go. The lines on the road that show us where the lanes act as our constant reference for where to steer the vehicle. Naturally, one of the first things we would like to do in developing a self-driving car is to detect lane lines using an algorithm automatically. In this project, I take a very first step to discover lane lines in images using Python and OpenCV.
+
 ## Objectives
 The goals of this project is to make a pipeline that finds lane lines on the road.
-[image1]: ./solidWhiteRight.jpg
+
+[image1]: ./solidWhiteRight.jpg "Road"
+
+[image2]: ./image_output/solidYellowCurve2.jpg "YellowCurve"
+
+[image3]: ./image_output/solidYellowLeft.jpg "YellowLeft"
+
+![alt text][image1]
 
 ---
 ### Reflection
 ### 1. Pipeline
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I used Gaussion blur technique with kernel size of 5 to make the image little noisy. After that I used Canny method to detect edges passing low and high threshold values. The edge image was then processed to mask ROI with the required color channel. The resultant image was then again transformed using Hough transformation to obtain a lined imaged. This image is then combined with the original color image to obtain the final lane marked image. 
-Please see snippet of pipeline code:
+My pipeline consisted of 5 steps. First, I converted the images to grayscale; then I used Gaussian blur technique with a kernel size of 5 to make the image little noisy. After that, I used the Canny method to detect edges passing low and high threshold values. The edge image was then processed to mask ROI with the required color channel. The resultant image was then again transformed using Hough transformation to obtain a line image. This image is then combined with the original color image to get the last lane marked image. 
+Please see the snippet of pipeline code:
 
 * gray = cv2.cvtColor(result,cv2.COLOR_RGB2GRAY) # processing the masked image
 * blur_gray = gaussian_blur(gray,kernel_size)
@@ -20,11 +28,11 @@ Please see snippet of pipeline code:
 * line_image=hough_lines(masked_edges, rho, theta, threshold, min_line_length, max_line_gap)
 * lines_edges=weighted_img(line_image, image, α=0.8, β=1., γ=0.)
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by to add one think left and one think right lane. Please see the below steps 
+To draw a single line on the left and right lanes, I modified the draw_lines() function by to add a separate thick left and right lanes. Please see the below steps: 
 
-* 1. Segerate the lines based on their slope to Left Lane(Negative slope) or Right Lane.
-* 2. Calculate the a point on the line in this center of the line 
-* 3. for left lane, use the point slop function (y-y')=m(x-x') to find top left and bottom left (x1 and x2) points using y1 and y2 as 60% of height and 100% of height 
+* Segerate the lines based on their slope to Left Lane(Negative slope) or Right Lane.
+* 2. Calculate a point on the line this is center of the line.
+* 3. for left lane, use the point slop function (y-y')=m(x-x') to find top left and bottom left (x1 and x2) points using y1 and y2 as 60% of height and 100% of the height 
 * 4. Repete this action to find x1, and x2 for right lane. 
 * 5. In case of lines containing "NaN" values use the last good known x1 and x2 points.
 
@@ -85,12 +93,18 @@ Please see the snippet of code:
         previous_frame_lines['r_x1']=x1
         previous_frame_lines['r_x2']=x2
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-
+![alt text][image2]
+![alt text][image3] 
 
 ### 2. Identify potential shortcomings with your current pipeline
-There are many potential shortcoming with this project for ex what would happen when we pass thru a construction zone, unlear lane markings, overlaped lane markings, bad weather ect.   
+There are many potential shortcomings of this project are  
+* a) What would happen when we pass thru a construction zone;
+* b) Unclear lane markings;
+* c) Overlapped lane markings;
+* d) Bad weather etc.   
 
 ### 3. Suggest possible improvements to your pipeline
-A possible improvement would be to use diffrent light spectrum to better see objects and markings. instead of finding lanes we should define a ROI, a rectangular space whoch varies a) based on speed of the car b) road c) weather c) location etc.  
+A possible improvement would be to use the different light spectrum to see objects and markings better. Instead of finding lanes we should define an ROI, a rectangular space which varies based on the speed of the car, weather condition, and location, etc.
+
+### 4. Final Video
+[Find Lane Lines](https://www.youtube.com/watch?v=yHErCYu-f0A)
