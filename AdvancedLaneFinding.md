@@ -22,7 +22,7 @@ Finally, use the output objpoints and imgpoints to compute the camera calibratio
 # ***Gradients and color transforms***
 A combination of color and gradient thresholds is used to generate a binary image.
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[image1]: ./examples/undistort_output.png "Test"
 
 # ***Perspective Transformation***
 Perspective transform is done useing cv2.warpPerspective transforme function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
