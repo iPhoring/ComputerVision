@@ -66,3 +66,10 @@ Additionally, a horizontal sliding window approach is used to find lane in case 
 ![image7](./test_images/FinalImage)
 
 # **2.Pipeline (video)**
+A line class is defined to keep track of last detections of the lane lines and radius so that we can use that to check new detections.
+
+[Final Video](https://www.youtube.com/watch?v=d1_lqcpHaao)
+
+# **Future improvements:**
+1. The current approach will fail if the lanes have extreme turns or there are no lane markings.
+2. Implement smoothing and use of last good known markings.
