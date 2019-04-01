@@ -38,3 +38,18 @@ dst_points = np.float32([[offset, 0],
                      [img_size[0]-offset, 0],
                      [img_size[0]-offset, img_size[1]],
                      [offset, img_size[1]]])
+## **Color and Thresholding**
+Gradient and color transformation are achived by taken sobel x i.e derivative in x and then thresholding the image to convert it into a binary image.
+
+sxbinary[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
+
+
+### **Color channel**
+I converted the image to HLS color space in addition to RBG to detect lane under diffrent light condition like shadows, missing markings,miss alignment and if the road top is not blacktop.
+
+![image2](./test_images/GradientsColor)
+
+### **Region of Interest**
+With trial and error method four points where identified to mark the lanes. 
+
+Additionally, a horizontal sliding window approach is used to find lane in case of sharp turns. 
