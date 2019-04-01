@@ -13,7 +13,7 @@ The goals of this project are the following:
 
 
 # *Camera Calibration*
-The code for this step is contained in the first few cell of the IPython notebook located in "/https://github.com/iPhoring/ComputerVision/blob/master/CarNDAdvancedLaneFindingV6.ipynb".
+The code for this step is contained in the first few cell of the IPython notebook located in [AdvancedLaneFinding](/https://github.com/iPhoring/ComputerVision/blob/master/CarNDAdvancedLaneFindingV6.ipynb).
 
 The very 1st step is to prepare "object points", which will be the (x, y, z) coordinates of the chessboard corners in the real world. The basic assumption is that the chessboard is fixed on the (x, y) plane at z=0 and all object points are same every image. Imagge points will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.
 
@@ -22,11 +22,7 @@ Finally, use the output objpoints and imgpoints to compute the camera calibratio
 # ***Gradients and color transforms***
 A combination of color and gradient thresholds is used to generate a binary image.
 
-[//]: # (Image References)
-
-[image1]: /examples/undistort_output.png "Test"
-
-[image2]: /solidWhiteRight.jpg "Road"
+![image1](./test_images/CameraCali.png)
 
 # ***Perspective Transformation***
 Perspective transform is done useing cv2.warpPerspective transforme function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
