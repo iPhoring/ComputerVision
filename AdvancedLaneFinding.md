@@ -19,21 +19,21 @@ The very 1st step is to prepare "object points", which will be the (x, y, z) coo
 
 Finally, use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the cv2.calibrateCamera() function. I applied this distortion correction to the test image using the cv2.undistort() function and obtained this result:
 
-# **Pipeline (Test Images)**
-## **Gradients and color transforms**
+# **1. Pipeline (Images)**
+### **Gradients and color transformations**
 A combination of color and gradient thresholds is used to generate a binary image.
 ![image1](./test_images/CameraCali.png)
 
-### **Color channel**
+### **Color channel selection**
 I converted the image to HLS color space in addition to RBG to detect lane under diffrent light condition like shadows, missing markings,miss alignment and if the road top is not blacktop.
 
-#### **Color and Thresholding**
+### **Color and Thresholding**
 Gradient and color transformation are achived by taken sobel x i.e derivative in x and then thresholding the image to convert it into a binary image.
 sxbinary[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 
 ![image2](./test_images/GradientsColor)
 
-## **Perspective Transformation**
+### **Perspective Transformation**
 Perspective transform is done using cv2.warpPerspective transform function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
 
 src_points=np.float32([[585,455],[702,455],[1200,720],[160,720]]) #by trial and error method
@@ -50,7 +50,7 @@ dst_points = np.float32([[offset, 0],
                      
 ![image6](./test_images/Perspective)
 
-**merging all:**
+**Merging all:**
 ![image5](./test_images/ColorGradiantPerspective)
 
                  
@@ -58,10 +58,11 @@ dst_points = np.float32([[offset, 0],
 With trial and error method four points where identified to mark the lanes. 
 ![image3](./test_images/ROI)
 
-
-### **Finding Lane Lines**
+### **Finding Lane Lines and Radius of Curvature**
 Additionally, a horizontal sliding window approach is used to find lane in case of sharp turns. 
 ![image4](./test_images/LaneLines)
 
-# **Final Image**
+### **Final Image**
 ![image7](./test_images/FinalImage)
+
+# **2.Pipeline (video)**
