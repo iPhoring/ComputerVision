@@ -12,20 +12,20 @@ The goals of this project are the following:
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
 
-# *Camera Calibration*
-The code for this step is contained in the first few cell of the IPython notebook located in [AdvancedLaneFinding](/https://github.com/iPhoring/ComputerVision/blob/master/CarNDAdvancedLaneFindingV6.ipynb).
+# **Camera Calibration**
+The code for this step is contained in the first few cell of the IPython notebook located in [AdvancedLaneFinding](./CarNDAdvancedLaneFindingV6.ipynb).
 
 The very 1st step is to prepare "object points", which will be the (x, y, z) coordinates of the chessboard corners in the real world. The basic assumption is that the chessboard is fixed on the (x, y) plane at z=0 and all object points are same every image. Imagge points will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.
 
 Finally, use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the cv2.calibrateCamera() function. I applied this distortion correction to the test image using the cv2.undistort() function and obtained this result:
 # **Pipeline (Test Images)**
-# ***Gradients and color transforms***
+## **Gradients and color transforms**
 A combination of color and gradient thresholds is used to generate a binary image.
 
 ![image1](./test_images/CameraCali.png)
 
-# ***Perspective Transformation***
-Perspective transform is done useing cv2.warpPerspective transforme function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
+## **Perspective Transformation**
+Perspective transform is done using cv2.warpPerspective transform function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
 
 src_points=np.float32([[585,455],[702,455],[1200,720],[160,720]]) #by trial and error method
 
