@@ -59,7 +59,7 @@ Additionally, a horizontal sliding window approach is used to find lane in case 
 ![image4](./test_images/LaneLines)
 ![image5](./test_images/ColorGradiantPerspective)
 ![image6](./test_images/Perspective)
-![image7](./test_images/Final Image)
+![image7](./test_images/FinalImage)
 
 
 
