@@ -36,17 +36,14 @@ sxbinary[(scaled_sobel >= thresh_min) & (scaled_sobel <= thresh_max)] = 1
 ### **Perspective Transformation**
 Perspective transform is done using cv2.warpPerspective transform function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
 
-src_points=np.float32([[585,455],[702,455],[1200,720],[160,720]]) #by trial and error method
-
-offset = 200 # offset for dst points
-
-#Grab the image shape
-img_size = (gray.shape[1], gray.shape[0])
-
-dst_points = np.float32([[offset, 0],
-                     [img_size[0]-offset, 0],
-                     [img_size[0]-offset, img_size[1]],
-                     [offset, img_size[1]]])
+	src_points=np.float32([[585,455],[702,455],[1200,720],[160,720]]) #by trial and error method
+	offset = 200 # offset for dst points
+	#Grab the image shape
+	img_size = (gray.shape[1], gray.shape[0])
+	dst_points = np.float32([[offset, 0],
+											 [img_size[0]-offset, 0],
+											 [img_size[0]-offset, img_size[1]],
+											 [offset, img_size[1]]])
                      
 ![image6](./test_images/Perspective)
 
@@ -59,7 +56,24 @@ With trial and error method four points where identified to mark the lanes.
 ![image3](./test_images/ROI)
 
 ### **Finding Lane Lines and Radius of Curvature**
-Additionally, a horizontal sliding window approach is used to find lane in case of sharp turns. 
+Additionally, a horizontal sliding window approach is used to find lane in case of sharp turns.
+
+#trying horizontal sliding window to find the minimum pixcels as the lane may be curving...
+
+
+	
+  	for i in range(0,3,1):
+			win_xleft_low =  win_xleft_high-margin
+			win_xleft_high = win_xleft_high+margin
+			cv2.rectangle(out_img,(win_xleft_low,win_y_low),(win_xleft_high,win_y_high),(0,0,255), 2)
+			good_left_inds = ((nonzeroy >= win_y_low) & (nonzeroy < win_y_high) &(nonzerox >= win_xleft_low)
+										&  (nonzerox < win_xleft_high)).nonzero()[0]
+			left_lane_inds.append(good_left_inds)
+			if len(good_left_inds) > minpix:
+					leftx_current = np.int(np.mean(nonzerox[good_left_inds]))
+					break
+	
+                    
 ![image4](./test_images/LaneLines)
 
 ### **Final Image**
