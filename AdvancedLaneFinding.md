@@ -1,7 +1,7 @@
-# Advanced Lane Finding Project
+# **Advanced Lane Finding**
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-The goals / steps of this project are the following:
-
+The goals of this project are the following:
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
 * Use color transforms, gradients, etc., to create a thresholded binary image.
@@ -10,3 +10,35 @@ The goals / steps of this project are the following:
 * Determine the curvature of the lane and vehicle position with respect to center.
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+
+# *Camera Calibration*
+The code for this step is contained in the first few cell of the IPython notebook located in "/https://github.com/iPhoring/ComputerVision/blob/master/CarNDAdvancedLaneFindingV6.ipynb".
+
+The very 1st step is to prepare "object points", which will be the (x, y, z) coordinates of the chessboard corners in the real world. The basic assumption is that the chessboard is fixed on the (x, y) plane at z=0 and all object points are same every image. Imagge points will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.
+
+Finally, use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the cv2.calibrateCamera() function. I applied this distortion correction to the test image using the cv2.undistort() function and obtained this result:
+# **Pipeline (Test Images)**
+# ***Gradients and color transforms***
+A combination of color and gradient thresholds is used to generate a binary image.
+
+[//]: # (Image References)
+
+[image1]: /examples/undistort_output.png "Test"
+
+[image2]: /solidWhiteRight.jpg "Road"
+
+# ***Perspective Transformation***
+Perspective transform is done useing cv2.warpPerspective transforme function. The function takes as inputs an image (img), as well as source (src_points) and destination (dst_points) points along with the camera tranformation matrix. I chose the hardcode the source and destination points in the following manner:
+
+src_points=np.float32([[585,455],[702,455],[1200,720],[160,720]]) #by trial and error method
+
+offset = 200 # offset for dst points
+
+#Grab the image shape
+img_size = (gray.shape[1], gray.shape[0])
+
+dst_points = np.float32([[offset, 0],
+                     [img_size[0]-offset, 0],
+                     [img_size[0]-offset, img_size[1]],
+                     [offset, img_size[1]]])
