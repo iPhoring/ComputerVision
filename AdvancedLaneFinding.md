@@ -41,9 +41,9 @@ Perspective transform is done using cv2.warpPerspective transform function. The 
 	#Grab the image shape
 	img_size = (gray.shape[1], gray.shape[0])
 	dst_points = np.float32([[offset, 0],
-											 [img_size[0]-offset, 0],
-											 [img_size[0]-offset, img_size[1]],
-											 [offset, img_size[1]]])
+				[img_size[0]-offset, 0],
+				[img_size[0]-offset, img_size[1]],
+				[offset, img_size[1]]])
                      
 ![image6](./test_images/Perspective)
 
