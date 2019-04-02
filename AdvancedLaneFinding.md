@@ -18,11 +18,11 @@ The code for this step is contained in the first few cell of the IPython noteboo
 The very 1st step is to prepare "object points", which will be the (x, y, z) coordinates of the chessboard corners in the real world. The basic assumption is that the chessboard is fixed on the (x, y) plane at z=0 and all object points are same every image. Imagge points will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.
 
 Finally, use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the cv2.calibrateCamera() function. I applied this distortion correction to the test image using the cv2.undistort() function and obtained this result:
+![image1](./test_images/CameraCali.png)
 
 # **1. Pipeline (Images)**
 ### **Gradients and color transformations**
 A combination of color and gradient thresholds is used to generate a binary image.
-![image1](./test_images/CameraCali.png)
 
 ### **Color channel selection**
 I converted the image to HLS color space in addition to RBG to detect lane under diffrent light condition like shadows, missing markings,miss alignment and if the road top is not blacktop.
