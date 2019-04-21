@@ -42,7 +42,7 @@ Image was converted to grayscale using this code
 	X_train=np.sum(X_train/3, axis=3, keepdims=True)
 
 
-### **Model Architecture**
+# **2. Model Architecture**
 
 My final model consisted of the following layers:
 
@@ -63,19 +63,19 @@ My final model consisted of the following layers:
 | Layer4:Dropout		| Keep Probability:0.5						|
 | Layer5:FullyConnected		| Input=84:Output=43						|
 
-### **Model Training**
+# **3. Model Training**
 Model training was iterative as the validation accuracy was below 80% inspite of chosing a well known architecture created by Pierre Sermanet and Yann LeCun (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf). I changed hyper parameters to make sure that model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a high accuracy on the training set but low accuracy on the validation set. Adition of dropout with slower learning rate helped to generalze the model. The final hyper parameters are:
 
 	_epochs =150
 	_batchSize=128
 	_dropout= 0.5 #forcing few weights to play dump
 	_learningRate = 0.0006 #slower rate 0.001 or 0.002 was resulting in less than 80%
-#### **Final Results**
+### **Final Results**
 	Validation Accuracy = 0.972
 	Test Accuracy with Model 2.0 = 0.952
 	Test Accuracy with Model 1.0 = 0.944
 
-#### **Model Tracking**
+# **Model Tracking**
 I implemented a tracking nomenclature since it was extremely difficult to keep track of model architecture, hyperpram and date & time. This approach helped me quickly organize my model training effort and save time. Please see below:
 
 ![image3](./examples/ModelV.png)
@@ -83,15 +83,17 @@ I implemented a tracking nomenclature since it was extremely difficult to keep t
 Details of the model can be tracked:
 ![image4](./examples/ModelDetails.png)
 
-#### **Testing model generalizability**
+# **4. Testing model generalizability**
 This was done to check model accuracy if subjected to a new image from internet. The model performed well as the images were preprocessed to meet the input needs i.e. 32x32x1 with good amount if luminosity.
 
 The model was able to identify the images correctly. Web sample test accuracy = 1.000
 
+Please see the prediction outputs:
+
 ![image5](./examples/predictions.png)
 
 
-#### **Top five softmax probabilities for the predictions**
+# **5. Top five softmax probabilities for the predictions**
 For each of the new images, i used the model's softmax probabilities function to show the certainty of the model's predictions.
 
 	_topCounter=5 #top five softmax probabilities
@@ -111,4 +113,5 @@ For each of the new images, i used the model's softmax probabilities function to
 	Actual ClassID 11==>Predicted Class ID: 11(9.99e-01), 30(3.34e-06), 27(2.53e-10), 21(1.22e-11),25(9.18e-13)
 	Actual ClassID 31==>Predicted Class ID: 31(9.99e-01), 19(4.10e-06),23(2.33e-07),21(2.19e-07),29(1.23e-08)
 	Actual ClassID 17==>Predicted Class ID: 17(9.99e-01), 14(4.78e-05),38(8.44e-07),12(6.33e-08),0(8.25e-09)
-       
+
+# **6. Future Improvement**
