@@ -39,8 +39,10 @@ The image dataset was normalized so that the data has mean zero and equal varian
 	
 Image was converted to grayscale using this code
 
-		X_train=np.sum(X_train/3, axis=3, keepdims=True)
+	X_train=np.sum(X_train/3, axis=3, keepdims=True)
 
+
+### **Model Architecture**
 
 My final model consisted of the following layers:
 
@@ -61,8 +63,15 @@ My final model consisted of the following layers:
 | Layer4:Dropout		| Keep Probability:0.5						|
 | Layer5:FullyConnected		| Input=84:Output=43						|
 
+### **Model Training**
+Model training was iterative as the validation accuracy was below 80% inspite of chosing a well known architecture created by Pierre Sermanet and Yann LeCun (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf). I changed hyper parameters to make sure that model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a high accuracy on the training set but low accuracy on the validation set. Adition of dropout with slower learning rate helped to generalze the model. The final hyper parameters are:
 
+	_epochs =150
+	_batchSize=128
+	_dropout= 0.5 #forcing few weights to play dump
+	_learningRate = 0.0006 #slower rate 0.001 or 0.002 was resulting in less than 80%
 
+I implemented a tracking nomenclature since it was extremely difficult to keep track of model architecture, hyper pram and date & time. This approach helped me quickly organize my model training effort and save time.
 
 
 
