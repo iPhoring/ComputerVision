@@ -31,4 +31,13 @@ Pandas library is used to calculate summary statistics of the traffic signs data
 ### **Class Distribution**
 ![image1](./examples/ClassDistribution.png)
 
+### **Pre-processing the dataset(normalization, grayscale and shuffling)**
+The image dataset was normalized so that the data has mean zero and equal variance to help us to reduce the error. For image data, I used the below code to approximately normalize the dataset.
+
+    	X_train=(X_train - 128)/ 128 
+	
+Image was converted to grayscale using this code
+
+		X_train=np.sum(X_train/3, axis=3, keepdims=True)
+
 
