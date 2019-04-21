@@ -70,8 +70,14 @@ Model training was iterative as the validation accuracy was below 80% inspite of
 	_batchSize=128
 	_dropout= 0.5 #forcing few weights to play dump
 	_learningRate = 0.0006 #slower rate 0.001 or 0.002 was resulting in less than 80%
+#### **Final Results**
+	Validation Accuracy = 0.974
+	Test Accuracy with Model 2.0 = 0.952
+	Test Accuracy with Model 1.0 = 0.944
 
-I implemented a tracking nomenclature since it was extremely difficult to keep track of model architecture, hyper pram and date & time. This approach helped me quickly organize my model training effort and save time.
+#### **Model Tracking**
+I implemented a tracking nomenclature since it was extremely difficult to keep track of model architecture, hyperpram and date & time. This approach helped me quickly organize my model training effort and save time. Please see below:
+
 
 
 
