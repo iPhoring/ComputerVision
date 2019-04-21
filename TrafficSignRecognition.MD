@@ -31,6 +31,7 @@ Pandas library is used to calculate summary statistics of the traffic signs data
 ### **Class Distribution**
 ![image1](./examples/ClassDistribution.png)
 
+# **Design and Test Model Architecture**
 ### **Pre-processing the dataset(normalization, grayscale and shuffling)**
 The image dataset was normalized so that the data has mean zero and equal variance to help us to reduce the error. For image data, I used the below code to approximately normalize the dataset.
 
@@ -39,5 +40,31 @@ The image dataset was normalized so that the data has mean zero and equal varian
 Image was converted to grayscale using this code
 
 		X_train=np.sum(X_train/3, axis=3, keepdims=True)
+
+
+My final model consisted of the following layers:
+
+| Layer				|Description							| 
+|:-----------------------------:|:-------------------------------------------------------------:| 
+| Layer1: Convolution		| Input=32x32x1:Output=28x28x6:Filter:5x5:Stride:1x1:VALID	|
+| Layer1:RELU			| Activation							|
+| Layer1:Max Pooling		| Input=28x28x6:Output=14x14x6:ksize:2x2:Stride:2x2		|
+| Layer2:Convolution 		| Input=14x14x6:Output=10x10x16:Filter:5x5:Stride:1x1:VALID	|
+| Layer2:MaxPooling		| Input=10x10x16:Output=5x5x16:ksize:2x2:Stride:2x2		|
+| Layer2:Flatten		| Input=5x5x16:Output=400					|
+| Layer2:Dropout		| Keep Probability:0.5						|
+| Layer3:FullyConnected		| Input=400:Output=120						|
+| Layer3:RELU			| Activation							|
+| Layer3:Dropout		| Keep Probability:0.5						|
+| Layer4:FullyConnected		| Input=120:Output=84						|
+| Layer4:RELU			| Activation							|
+| Layer4:Dropout		| Keep Probability:0.5						|
+| Layer5:FullyConnected		| Input=84:Output=43						|
+|:-----------------------------:|:-------------------------------------------------------------:| 
+
+
+
+
+
 
 
