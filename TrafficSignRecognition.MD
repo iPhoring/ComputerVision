@@ -71,15 +71,44 @@ Model training was iterative as the validation accuracy was below 80% inspite of
 	_dropout= 0.5 #forcing few weights to play dump
 	_learningRate = 0.0006 #slower rate 0.001 or 0.002 was resulting in less than 80%
 #### **Final Results**
-	Validation Accuracy = 0.974
+	Validation Accuracy = 0.972
 	Test Accuracy with Model 2.0 = 0.952
 	Test Accuracy with Model 1.0 = 0.944
 
 #### **Model Tracking**
 I implemented a tracking nomenclature since it was extremely difficult to keep track of model architecture, hyperpram and date & time. This approach helped me quickly organize my model training effort and save time. Please see below:
 
+![image3](./examples/ModelV.png)
+
+Details of the model can be tracked:
+![image4](./examples/ModelDetails.png)
+
+#### **Testing model generalizability**
+This was done to check model accuracy if subjected to a new image from internet. The model performed well as the images were preprocessed to meet the input needs i.e. 32x32x1 with good amount if luminosity.
+
+The model was able to identify the images correctly. Web sample test accuracy = 1.000
+
+![image5](./examples/predictions.png)
 
 
+#### **Top five softmax probabilities for the predictions**
+For each of the new images, i used the model's softmax probabilities function to show the certainty of the model's predictions.
 
+	_topCounter=5 #top five softmax probabilities
+	_softmaxLogits = tf.nn.softmax(logits)
+	_top_k=tf.nn.top_k(_softmaxLogits,_topCounter)
 
-
+	with tf.Session() as sess:
+	    _saver = tf.train.import_meta_graph('./root/0.0.2_2019Apr21-07:47:07UTC/LeNet_0.0.2_RunNumber_2_0.974_5 layers.hdf5.meta')
+	    _saver.restore(sess, tf.train.latest_checkpoint('./root/0.0.2_2019Apr21-07:47:07UTC/'))
+	    _softmaxProbabilities = sess.run(_top_k, feed_dict={x: X_test_web, keep_prob: 1.0})
+	    print(_softmaxProbabilities)
+   
+##### **Output of tf.nn.top_k(softmax probabilities)**
+	Actual ClassID 12==>Predicted Class ID: 12(100%), 40(2.18e-11%), 13(2.41e-15),  9(3.15e-18), 42(2.9e-18)
+	Actual ClassID 34==>Predicted Class ID: 34(9.99e-01), 38(2.85e-4), 13(1.1e-8), 35(9.05e-11),  9(8.07e-11)
+	Actual ClassID 13==>Predicted Class ID: 13(1.0e+00), 12(1.49e-31), 35(1.37e-34), 15(1.38e-36),0(0.0+00)
+	Actual ClassID 11==>Predicted Class ID: 11(9.99e-01), 30(3.34e-06), 27(2.53e-10), 21(1.22e-11),25(9.18e-13)
+	Actual ClassID 31==>Predicted Class ID: 31(9.99e-01), 19(4.10e-06),23(2.33e-07),21(2.19e-07),29(1.23e-08)
+	Actual ClassID 17==>Predicted Class ID: 17(9.99e-01), 14(4.78e-05),38(8.44e-07),12(6.33e-08),0(8.25e-09)
+       
