@@ -26,7 +26,7 @@ Pandas library is used to calculate summary statistics of the traffic signs data
 4. Class distribution is not even - with few outliers like Class ID 1(Speed limit (20km/h),2(Speed limit (50km/h) and 13(Yield) followed by 12(Priority Road) abd 38(Keep right).
 
 ### **Eyeballing Images**
-![image2](./examples/TrafficSample)
+![image2](./examples/TrafficSample.png)
 
 ### **Class Distribution**
 ![image1](./examples/ClassDistribution.png)
