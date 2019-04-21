@@ -115,3 +115,5 @@ For each of the new images, i used the model's softmax probabilities function to
 	Actual ClassID 17==>Predicted Class ID: 17(9.99e-01), 14(4.78e-05),38(8.44e-07),12(6.33e-08),0(8.25e-09)
 
 # **6. Future Improvement**
+The main difficulty will be to create label data to make a generalized model capable of handling real world senerio like diffrent view angle, distortion, damaged sign, portioned covered etc. It would nice to extend the project to test with  other known model like Inception V3, VGG 16/19, ResNet50.
+
