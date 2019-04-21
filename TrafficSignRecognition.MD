@@ -1,29 +1,29 @@
 # **Traffic Sign Recognition**
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-## **Project Goal**
+## **Project Goals**
 The goals of this project are the following:
 * Load the traffic dataset
 * Explore, summarize and visualize the data set
 * Design, train and test a CNN model architecture
-* Using the model to make predictions on new images downloaded from web
+* Using the model to make predictions on new images downloaded from the web
 * Analyze the prediction(softmax) probabilities of the new images
 * Future improvements - point of view
 
 # **1. Pipeline - Traffic Images**
-Pandas library is used to calculate summary statistics of the traffic signs dataset. Trainig features are a 4D array(number of  examples, width of an image, height of an image, color channels) of traffic sign images.
+Pandas library is used to calculate the summary statistics of the traffic signs dataset. Training features are a 4D array (number of  examples, width of an image, height of an image, color channels) of traffic sign images.
 
-* The size of training set is: **34799,width:32, height:32, channels:3** 
-* The size of validation set is:**4410**
-* The size of test set is:**12630**
-* The shape of a traffic sign image is:**Width of 32,a Height:32 and color channels:3(RBG)**
+* The size of the training set is: **34799,width:32, height:32, channels:3** 
+* The size of the validation set is:**4410**
+* The size of the test set is:**12630**
+* The shape of a traffic sign image is:**width of 32,a height:32 and color channels:3(RBG)**
 * The number of unique classes/labels in the data set is: **43 classes**
 
 # **Observations**
 1. The train data set is orderly packed.
-2. The mapping between Class ID and Traffic Sign name are present in saperate file called "signname.csv".
-3. Images are smaller in size and mostly front view.
-4. Class distribution is not even - with few outliers like Class ID 1(Speed limit (20km/h),2(Speed limit (50km/h) and 13(Yield) followed by 12(Priority Road) abd 38(Keep right).
+2. The mapping between class ID and traffic sign name are present in a separate file called "signname.csv".
+3. Images are smaller in size and mostly frontal view.
+4. Class distribution is not even - with few outliers like Class ID 1(Speed limit (20km/h),2 (Speed limit (50km/h) and 13(Yield) followed by 12(Priority Road) and 38(Keep right).
 
 ### **Eyeballing Images**
 ![image2](./examples/TrafficSample.png)
@@ -33,11 +33,11 @@ Pandas library is used to calculate summary statistics of the traffic signs data
 
 # **Design and Test Model Architecture**
 ### **Pre-processing the dataset(normalization, grayscale and shuffling)**
-The image dataset was normalized so that the data has mean zero and equal variance to help us to reduce the error. For image data, I used the below code to approximately normalize the dataset.
+The image dataset was normalized so that the data has a mean of zero and equal variance to help us to reduce the error. For image data, I used the below code to approximately normalize the dataset.
 
     	X_train=(X_train - 128)/ 128 
 	
-Image was converted to grayscale using this code
+Image was converted to grayscale before normalization using the below code
 
 	X_train=np.sum(X_train/3, axis=3, keepdims=True)
 
@@ -64,7 +64,7 @@ My final model consisted of the following layers:
 | Layer5:FullyConnected		| Input=84:Output=43						|
 
 # **3. Model Training**
-Model training was iterative as the validation accuracy was below 80% inspite of chosing a well known architecture created by Pierre Sermanet and Yann LeCun (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf). I changed hyper parameters to make sure that model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a high accuracy on the training set but low accuracy on the validation set. Adition of dropout with slower learning rate helped to generalze the model. The final hyper parameters are:
+Model training was iterative as the validation accuracy was below 80% despite choosing a well known architecture created by Pierre Sermanet and Yann LeCun (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf). I changed the hyper parameters to make sure that the model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a high accuracy on the training set but low accuracy on the validation set. Addition of a dropout layer with a slower learning rate helped to generalize the model. The final hyper parameters are:
 
 	_epochs =150
 	_batchSize=128
@@ -84,7 +84,7 @@ Details of the model can be tracked:
 ![image4](./examples/ModelDetails.png)
 
 # **4. Testing model generalizability**
-This was done to check model accuracy if subjected to a new image from internet. The model performed well as the images were preprocessed to meet the input needs i.e. 32x32x1 with good amount if luminosity.
+This was done to check model accuracy if subjected to a new image from the internet. The model performed well as the images were preprocessed to meet the input needs i.e. 32x32x1 with good amount of luminosity.
 
 The model was able to identify the images correctly. Web sample test accuracy = 1.000
 
@@ -94,7 +94,7 @@ Please see the prediction outputs:
 
 
 # **5. Top five softmax probabilities for the predictions**
-For each of the new images, i used the model's softmax probabilities function to show the certainty of the model's predictions.
+For each of the new images, I used the model's softmax probabilities function to show the certainty of the model's predictions.
 
 	_topCounter=5 #top five softmax probabilities
 	_softmaxLogits = tf.nn.softmax(logits)
@@ -114,6 +114,9 @@ For each of the new images, i used the model's softmax probabilities function to
 	Actual ClassID 31==>Predicted Class ID: 31(9.99e-01), 19(4.10e-06),23(2.33e-07),21(2.19e-07),29(1.23e-08)
 	Actual ClassID 17==>Predicted Class ID: 17(9.99e-01), 14(4.78e-05),38(8.44e-07),12(6.33e-08),0(8.25e-09)
 
-# **6. Future Improvement**
-The main difficulty will be to create label data to make a generalized model capable of handling real world senerio like diffrent view angle, distortion, damaged sign, portioned covered etc. It would nice to extend the project to test with  other known model like Inception V3, VGG 16/19, ResNet50.
+# **6. Future Improvements**
+The main difficulty will be to create label data to make a generalized model capable of handling real world scenarios like diffrent view angles, distortion, damaged signs, hidden portions etc. It would be nice to test and extend other well known models like Inception V3, VGG 16/19, ResNet50. It would be also interesting to create complementary models to train and cross-train on good label data and intentionally mislabeled data. 
+
+#### ** Challenge ** 
+The main challenge for an image recognition model is creating a vast amount of label data. 
 
