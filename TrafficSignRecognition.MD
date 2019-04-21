@@ -60,7 +60,7 @@ My final model consisted of the following layers:
 | Layer4:RELU			| Activation							|
 | Layer4:Dropout		| Keep Probability:0.5						|
 | Layer5:FullyConnected		| Input=84:Output=43						|
-|:-----------------------------:|:-------------------------------------------------------------:| 
+
 
 
 
