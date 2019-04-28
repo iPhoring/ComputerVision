@@ -130,7 +130,7 @@ Metrics:
 ![image5](./examples/ModelLossC15.png)
 
 ### Finally, the model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
-![image6](./examples/ModelLossC15.png)(https://youtu.be/AzziE1QRoAo)
+![image6](https://youtu.be/AzziE1QRoAo)
 
 
 # **6. Future Improvements**
