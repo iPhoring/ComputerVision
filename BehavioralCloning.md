@@ -1,7 +1,7 @@
 # **Behavioral Cloning** 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-**Behavioral Cloning Project**
+## **Behavioral Cloning Project**
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
 * Build, a convolution neural network in Keras that predicts steering angles from images
@@ -9,9 +9,24 @@ The goals / steps of this project are the following:
 * Test that the model successfully drives around track one without leaving the road
 * Summarize the results with a written report
 
-# **Simulator Data Collection**
-I collected the data (images) by driving the car in the Udacity simulator in training mode.
+## **Simulator Data Collection**
+I collected the data (images) by driving the car in the Udacity simulator in training mode.The simulator environment provides two options: Training Mode and Autonomous Mode. 
+
+1. Training Mode: The simulator will load where we can drive the car similar to video game.
+
+2. Autonomous Mode: The autonomous mode is used to run the CNN trained model.
+
+
+
 ![image1](./examples/Simulator.png)
+
+The input dataset comprised of  55032 images which is created by combining the four different datasets:  
+1. Manually created dataset by driving the car in the center of the track in the clockwise direction 
+2. Manually created dataset by driving the car close to the left edge of the track in the counterclockwise direction 
+3. Manually created dataset by driving the car close to the right edge of the track in the clockwise direction  
+4. Dataset provided by Udacity
+
+In order to make the model unbiased, the car was driven towards the edge of right and left the sides of the lane in  clockwise and counterclockwise respectively in addition to driving at the center of the lane.
 
 
 
