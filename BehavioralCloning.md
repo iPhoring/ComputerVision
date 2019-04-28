@@ -43,12 +43,12 @@ As we know, a good model requires the car to steer correctly irrespective of the
 To start with the Augmentation process, I first considered the correction of left and right camera angles.To do this, I followed an empirical approach and set the left and right camera angle correction value as 0.15 and 0.2 respectively.
 
 * Horizontal Flip:
-A effective technique for helping with the left turn bias involves flipping images and taking the opposite sign of the steering measurement.
+Horizontal flipping takes care the left turn bias which involves flipping images and taking the opposite sign of the steering measurement.
 
       return np.fliplr(_image)
       _originalSteeringAngle = -1. *_originalSteeringAngle
       
-* Darker Image & Shadow: I noticed that the track 1 has diffrent brightness and shadows in different areas while collecting the data. In order to train model for such conditions a random value was applied to RGB channel to make the image darker and a randon shadow was added to the image.
+* Darker Image & Shadow: I noticed that the track1 has diffrent brightness and shadows in different areas while collecting the data. In order to train model for such conditions, a random value was applied to multiply the RGB channels to make the image darker and a randon shadow was added to the image.
 
       #brightness
           _darkFactor = np.random.uniform(_lowValue, _highValue)    
@@ -70,11 +70,11 @@ A effective technique for helping with the left turn bias involves flipping imag
         return cv2.addWeighted(_image.astype(np.int32), _alphaWeight, _srcImageCopy,
                               _weightFactor, 0).astype(np.uint8)
     
-* Blurred: We used the smallest size and the fastest graphical quality for capturing data. In order to train model for such conditions a gaussian filter was used to blurr the image.
+* Blurred: We used the smallest size and the fastest graphical quality for capturing data. A gaussian filter was used to blurr the image to train the model in this case.
 
       def _blurred(_image,_alpha=0.6):
           return ndimage.gaussian_filter(_image, _alpha)
-* Translation: In order to remove streering angle bias 0.0(driving stright) I used openCV function to translate image pixcels and adjusted streeing angle to sync with the translation. After few permutaions a adjustment of 0.002 was used as the steering angle adjustment per pixcel.
+* Translation: In order to remove streering angle bias 0.0(driving stright) I used openCV function to translate image pixcels and adjusted streeing angle to sync with the translation. After few permutaions, a adjustment of 0.002 was used as the steering angle adjustment per pixel.
 
       _newSteeringAngle = _originalSteeringAngle +( _transX * _steeringAngleShift)
       _transMatrix = np.float32([[1, 0, _transX],[0, 1, _transY]])
@@ -86,7 +86,7 @@ Final Output:
 
 ### **Model Architecture**
 
-After experimenting with LeNet and NVIDIA, I chose NVIDIA architecture as it had better 'mse' and faster reaction time in GPU. I have used NVIDIA https://arxiv.org/pdf/1704.07911.pdf and https://arxiv.org/pdf/1604.07316v1.pdf as a reference for coming up with the baseline model.The data is cropped and normalized in the model using a Keras lambda layer. 
+After experimenting with LeNet and NVIDIA, I chose NVIDIA architecture as it has better 'mse' and faster reaction time in GPU. I have used NVIDIA https://arxiv.org/pdf/1704.07911.pdf and https://arxiv.org/pdf/1604.07316v1.pdf as a reference for coming up with the baseline model.The data is cropped and normalized in the model using a Keras lambda layer. 
 
 Final model:
 01. Image Cropping to remove Sky and Car dashboard
@@ -103,7 +103,8 @@ Final model:
 12. Fully connected: neurons: 1 (output)
 
 ### **Model Training**
-Model training was iterative as the validation loss was below 3% as I used a well known architecture created by NVIDIA(https://arxiv.org/pdf/1604.07316v1.pdf). I changed hyper parameters to make sure that the model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a 'low mse' on the training and validation set but high mse on simulation. Addition of Keras lambda layer for normalization, cropping and image augmentation to cover random shadow, blurrness, steering angle bias collecting data to cover center lane driving, recovering from the left and right sides of the road helped to generalize the model. 
+
+Model training was iterative and as I used a well known architecture created by NVIDIA(https://arxiv.org/pdf/1604.07316v1.pdf), the validation loss was below 3% . I changed hyper parameters to make sure that the model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a 'low mse' on the training and validation set but 'high error' on simulator autonomous mode driving. Addition of Keras lambda layer for normalization, cropping and image augmentation to cover random shadow, blurrness, steering angle bias collecting data to cover center lane driving, recovering from the left and right sides of the road helped to generalize the model. 
 
 The final data pipeline hyper parameters are:
 
@@ -134,9 +135,9 @@ Metrics:
 
 
 # **Future Improvements**
-The current model is adopted to clone my driving behavior which can be biased based on my style(one drive close to curve while turning). I would like to create more data/images to make a generalized model capable of handling real world scenarios like diffrent view angles, weather etc. 
+The current model is adopted to clone my driving behavior which can be biased based on my style( drive close to curve while turning). I would like to create more data/images to make a generalized model capable of handling real world scenarios like diffrent view angles, weather etc. 
 
-It would be nice to test and extend NVIDIA models to add Keras lambda layer to change incoming image color space to remove variations. It would be also interesting to create complementary models to train and cross-train diffrent driving behavior. 
+It would be nice to test and extend NVIDIA models to add Keras lambda layer to change incoming image color space to remove variations. It would be also interesting to create complementary models to train and cross-train diffrent driving behaviors. 
 
 #### ** Challenge ** 
 The main challenge for a self driving car is to handle real world conditions like optical illusions/mirage or mirror mounted on a back of car.
