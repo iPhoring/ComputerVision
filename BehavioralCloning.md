@@ -129,12 +129,14 @@ Metrics:
 
 ![image5](./examples/ModelLossC15.png)
 
-### Finally, the model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
-![image6](https://youtu.be/AzziE1QRoAo)
+### **Finally, the model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.**
+[Drive](https://youtu.be/AzziE1QRoAo)
 
 
-# **6. Future Improvements**
-The main difficulty will be to create label data to make a generalized model capable of handling real world scenarios like diffrent view angles, distortion, damaged signs, hidden portions etc. It would be nice to test and extend other well known models like Inception V3, VGG 16/19, ResNet50. It would be also interesting to create complementary models to train and cross-train on good label data and intentionally mislabeled data. 
+# **Future Improvements**
+The current model is adopted to clone my driving behavior which can be biased based on my style(one drive close to curve while turning). I would like to create more data/images to make a generalized model capable of handling real world scenarios like diffrent view angles, weather etc. 
+
+It would be nice to test and extend NVIDIA models to add Keras lambda layer to change incoming image color space to remove variations. It would be also interesting to create complementary models to train and cross-train diffrent driving behavior. 
 
 #### ** Challenge ** 
-The main challenge for an image recognition model is creating a vast amount of label data. 
+The main challenge for a self driving car is to handle real world conditions like optical illusions/mirage or mirror mounted on a back of car.
