@@ -122,7 +122,7 @@ The final data pipeline hyper parameters are:
 I also implemented model checkpoints:
 
             #model checkpoint
-            _checkpoint = ModelCheckpoint(filepath='model'+_signature+'checkpoint.h5', monitor='val_loss',                          save_best_only=True)
+            _checkpoint = ModelCheckpoint(filepath='modelcheckpoint.h5', monitor='val_loss',save_best_only=True)
             _stopper = EarlyStopping(monitor='val_acc', min_delta=0.0003, patience=5)
 
 Metrics:
