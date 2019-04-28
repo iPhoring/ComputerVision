@@ -17,7 +17,7 @@ I collected the data (images) by driving the car in the Udacity simulator in tra
 
 ![image1](./examples/Simulator.png)
 
-The input dataset comprised of 55032 images which is created by combining the four different datasets:  
+The input dataset comprised of 55032 images which is created by combining the following four different datasets:  
 1. Manually created dataset by driving the car in the center of the track in the clockwise direction 
 2. Manually created dataset by driving the car close to the left edge of the track in the counterclockwise direction 
 3. Manually created dataset by driving the car close to the right edge of the track in the clockwise direction  
@@ -30,7 +30,7 @@ In order to make the model unbiased, the car was driven towards the edge of righ
 - The size of the validation set is:11007(20%), height:160, width:320, channels:3 
 - The number of classes/labels in the data set is: 1 class (Steering Angle)
 ### **Observation**
-While investigating this large dataset, I noticed some factors which I considered, can cause confusion and affect the training of the model. 
+While investigating this large dataset, I noticed some factors which I thought, could cause confusion and affect the training of the model. 
 
 ![image2](./examples/SteeringAngle.png)
 
