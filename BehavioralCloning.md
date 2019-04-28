@@ -36,11 +36,11 @@ While investigating this large dataset, I noticed some factors which I thought, 
 
 It is observed that the car has a tendency to drive straight which means there is a very little deviation in the steering angles. 
 Besides, as there are shadows and darker images due to various reasons on the track, training the model without taking these into account, may produce erroneous model. 
-As we know, a good model requires the car to steer correctly irrespective of the sides and turns and to identify the objects to drive it safely. To address these, I applied Augmentation techniques on the dataset. The steps are discussed in the following paragraphs.
+As we know, a good model requires the car to steer correctly irrespective of the sides and turns and to identify the objects to drive safely. To address these, I applied Augmentation techniques on the dataset. The steps are discussed in the following paragraphs.
 
 ### **Augmentation**
 * Camera Angle correction:
-To start with the Augmentation process, I first considered the correction of left and right steering angles.To do this I followed an empirical approach and set the left and right camera angle correction value as 0.15 and 0.2 respectively.
+To start with the Augmentation process, I first considered the correction of left and right camera angles.To do this, I followed an empirical approach and set the left and right camera angle correction value as 0.15 and 0.2 respectively.
 
 * Horizontal Flip:
 A effective technique for helping with the left turn bias involves flipping images and taking the opposite sign of the steering measurement.
