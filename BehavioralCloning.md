@@ -64,15 +64,18 @@ A effective technique for helping with the left turn bias involves flipping imag
         else:        
             _bottomRight = _bottomLeft + np.random.uniform() *(rows-_bottomLeft)
             _topRight = _topLeft + np.random.uniform() *(rows-_topLeft) 
-        _poly = np.asarray([[[_topLeft,0],[_bottomLeft, cols],[_bottomRight, cols],[_topRight,0]]], dtype=np.int32)       
+        _poly = np.asarray([[[_topLeft,0],[_bottomLeft, cols],[_bottomRight, cols],
+                             [_topRight,0]]], dtype=np.int32)       
         ...
-        return cv2.addWeighted(_image.astype(np.int32), _alphaWeight, _srcImageCopy, _weightFactor, 0).astype(np.uint8)
+        return cv2.addWeighted(_image.astype(np.int32), _alphaWeight, _srcImageCopy,
+                              _weightFactor, 0).astype(np.uint8)
     
 * Blurred: We used the smallest size and the fastest graphical quality for capturing data. In order to train model for such conditions a gaussian filter was used to blurr the image.
 
       def _blurred(_image,_alpha=0.6):
           return ndimage.gaussian_filter(_image, _alpha)
 * Translation: In order to remove streering angle bias 0.0(driving stright) I used openCV function to translate image pixcels and adjusted streeing angle to sync with the translation. After few permutaions a adjustment of 0.002 was used as the steering angle adjustment per pixcel.
+
       _newSteeringAngle = _originalSteeringAngle +( _transX * _steeringAngleShift)
       _transMatrix = np.float32([[1, 0, _transX],[0, 1, _transY]])
       _image = cv2.warpAffine(_image, _transMatrix, (_width,_height))
