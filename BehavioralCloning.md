@@ -80,6 +80,10 @@ A effective technique for helping with the left turn bias involves flipping imag
       _transMatrix = np.float32([[1, 0, _transX],[0, 1, _transY]])
       _image = cv2.warpAffine(_image, _transMatrix, (_width,_height))
 
+Final Output:
+![image3](./examples/ImageAug_1.png)
+![image4](./examples/ImageAug_2.png)
+
 ### **Model Architecture**
 
 After experimenting with LeNet and NVIDIA, I chose NVIDIA architecture as it had better 'mse' and faster reaction time in GPU. I have used NVIDIA https://arxiv.org/pdf/1704.07911.pdf and https://arxiv.org/pdf/1604.07316v1.pdf as a reference for coming up with the baseline model.The data is cropped and normalized in the model using a Keras lambda layer. 
@@ -99,7 +103,7 @@ Final model:
 12. Fully connected: neurons: 1 (output)
 
 ### **Model Training**
-Model training was iterative as the validation loss was below 2% as I used a well known architecture created by NVIDIA(https://arxiv.org/pdf/1604.07316v1.pdf). I changed hyper parameters to make sure that the model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a 'low mse' on the training and validation set but high mse on simulation. Addition of Keras lambda layer for normalization, cropping and image augmentation to cover random shadow, blurrness, steering angle bias collecting data to cover center lane driving, recovering from the left and right sides of the road helped to generalize the model. 
+Model training was iterative as the validation loss was below 3% as I used a well known architecture created by NVIDIA(https://arxiv.org/pdf/1604.07316v1.pdf). I changed hyper parameters to make sure that the model is generalized for testing. All adjustments on model architecture was due to overfitting i.e. a 'low mse' on the training and validation set but high mse on simulation. Addition of Keras lambda layer for normalization, cropping and image augmentation to cover random shadow, blurrness, steering angle bias collecting data to cover center lane driving, recovering from the left and right sides of the road helped to generalize the model. 
 
 The final data pipeline hyper parameters are:
 
@@ -122,10 +126,11 @@ I also implemented model checkpoints:
             _stopper = EarlyStopping(monitor='val_acc', min_delta=0.0003, patience=5)
 
 Metrics:
-![image1](./examples/ModelLossC15.png)
+
+![image5](./examples/ModelLossC15.png)
 
 ### Finally, the model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
-[![Watch the video](https://youtu.be/AzziE1QRoAo)](T)
+![image6](./examples/ModelLossC15.png)(https://youtu.be/AzziE1QRoAo)
 
 
 # **6. Future Improvements**
