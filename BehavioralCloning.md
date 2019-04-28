@@ -1,7 +1,7 @@
 # **Behavioral Cloning** 
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 **Behavioral Cloning Project**
-
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
 * Build, a convolution neural network in Keras that predicts steering angles from images
@@ -11,7 +11,8 @@ The goals / steps of this project are the following:
 
 # **Simulator Data Collection**
 I collected the data (images) by driving the car in the Udacity simulator in training mode.
-[image1]: ./examples/Simulator.png "Car Simulator"
+![image1](./examples/Simulator.png)
+
 
 
 [//]: # (Image References)
