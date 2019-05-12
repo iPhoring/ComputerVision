@@ -58,7 +58,7 @@ Here is the simulator final state after running the EKL with dataset 1:
 # Accuracy
 
 The estimated values for px,py,vx,vy compared to groundtruth values are calculated using RMSE. 
-The RMSE values for Dataset1: RMSE[
+The RMSE values for Dataset1: RMSE[0.0973,0.0855,0.4513,0.4399]
 
 
 
