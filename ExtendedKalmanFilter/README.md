@@ -31,20 +31,31 @@ Values provided by the simulator to the c++ program
 
 # Output
 values provided by the c++ program to the simulator
-["estimate_x"] <= kalman filter estimated position x
-["estimate_y"] <= kalman filter estimated position y
-["rmse_x"]
-["rmse_y"]
-["rmse_vx"]
-["rmse_vy"]
 
----
+* ["estimate_x"] <= kalman filter estimated position x
+* ["estimate_y"] <= kalman filter estimated position y
+* ["rmse_x"]
+* ["rmse_y"]
+* ["rmse_vx"]
+* ["rmse_vy"]
 
 ## Code Style
 This project sticks to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
 
+---
+# Execution of Kalman Filter
 
+
+The simulator provides two datasets. The difference between them are:
+The direction the car (the object) is moving.
+The order the first measurement is sent to the EKF. On dataset 1, the LIDAR measurement is sent first. On the dataset 2, the RADAR measurement is sent first.
+Here is the simulator final state after running the EKL with dataset 1:
+![image4](./images/RMSE.png)
+
+
+
+---
 ![image1](./images/KalmanFilter.png)
 ![image2](./images/MeasurementUpdate.png)
 ![image3](./images/RADARInit.png)
-![image4](./images/RMSE.png)
+
