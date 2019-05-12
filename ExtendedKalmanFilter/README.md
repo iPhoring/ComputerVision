@@ -59,6 +59,12 @@ Here is the simulator final state after running the EKL with dataset 1:
 The estimated values for px,py,vx,vy compared to groundtruth values are calculated using RMSE. 
 The RMSE values for Dataset1: **RMSE [0.0973,0.0855,0.4513,0.4399]**
 
-# ExtendedKF Update step
-The predict step for extended filter looks as below:
-![image3](./images/MeasurementUpdate.png)
+![image4](./images/KalmanExecution.png)
+
+# ExtendedKF Measurement and Update steps
+The measurement update step for extended filter looks as below:
+![image4](./images/EKF.png)
+
+The update step for extended filter looks as below:
+![image5](./images/MeasurementUpdate.png)
+
