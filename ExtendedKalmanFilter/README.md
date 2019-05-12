@@ -45,16 +45,21 @@ This project sticks to [Google's C++ style guide](https://google.github.io/style
 ---
 # Execution of Kalman Filter
 To start with, change the working directory to 'build'. To run the Extended Kalman filter, ./ExtendedKF should be executed. 
-If everything works fine then the otput should be as follows and the simulator gets connected to the program instantly:
+If everything works fine then the output should be as follows and the simulator gets connected to the program instantly:
 
 
 
 
-We have two datasets in the simulator namely Dataset1 and Dataset2. The difference between them are:
-The direction the car (the object) is moving.
-The order the first measurement is sent to the EKF. On dataset 1, the LIDAR measurement is sent first. On the dataset 2, the RADAR measurement is sent first.
+We have two datasets in the simulator namely Dataset1 and Dataset2. 
 Here is the simulator final state after running the EKL with dataset 1:
 ![image4](./images/RMSE.png)
+
+
+# Accuracy
+
+The estimated values for px,py,vx,vy compared to groundtruth values are calculated using RMSE. 
+The RMSE values for Dataset1: RMSE[
+
 
 
 
@@ -62,4 +67,5 @@ Here is the simulator final state after running the EKL with dataset 1:
 ![image1](./images/KalmanFilter.png)
 ![image2](./images/MeasurementUpdate.png)
 ![image3](./images/RADARInit.png)
+
 
