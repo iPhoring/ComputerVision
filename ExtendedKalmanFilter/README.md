@@ -1,7 +1,7 @@
 # Extended Kalman Filter Project
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-In this project is to utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. 
+The goal of the project is to estimate the state of a moving object of interest with noisy lidar and radar measurements utilising the Kalman filter. 
 
 # Prerequisites
 1. [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) Git repository includes two files that can be used to set up and install for either Linux or Mac systems.
@@ -16,7 +16,7 @@ In this project is to utilize a kalman filter to estimate the state of a moving 
   * Mac: same deal as make - [install Xcode command line tools](https://developer.apple.com/xcode/features/)
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
-Once the install for Prerequisites are complete, the main program can be built and run by doing the following from the project top directory.
+Once the installation for Prerequisites is complete, the main program can be built and run by following the below steps.
 #### Basic Build Instructions
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
