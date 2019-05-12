@@ -1,5 +1,5 @@
 # Extended Kalman Filter Project
-Self-Driving Car Engineer Nanodegree Program
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 In this project is to utilize a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. 
 
@@ -42,3 +42,9 @@ values provided by the c++ program to the simulator
 
 ## Code Style
 This project sticks to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
+
+
+![image1](./images/KalmanFilter.png)
+![image2](./images/MeasurementUpdate.png)
+![image3](./images/RADARInit.png)
+![image4](./images/RMSE.png)
