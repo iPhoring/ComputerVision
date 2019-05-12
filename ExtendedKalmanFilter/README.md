@@ -46,7 +46,7 @@ This project sticks to [Google's C++ style guide](https://google.github.io/style
 # Execution of Kalman Filter
 To start with, change the working directory to 'build'. To run the Extended Kalman filter, ./ExtendedKF should be executed. 
 If everything works fine then the output should be as follows and the simulator gets connected to the program instantly:
-
+![image1](./images/KalmanExecution.png)
 
 
 
@@ -59,12 +59,9 @@ Here is the simulator final state after running the EKL with dataset 1:
 The estimated values for px,py,vx,vy compared to groundtruth values are calculated using RMSE. 
 The RMSE values for Dataset1: **RMSE [0.0973,0.0855,0.4513,0.4399]**
 
-![image4](./images/KalmanExecution.png)
-
 # ExtendedKF Measurement and Update steps
 The measurement update step for extended filter looks as below:
-![image4](./images/EKF.png)
+![image3](./images/MeasurementUpdate.png)
 
 The update step for extended filter looks as below:
-![image5](./images/MeasurementUpdate.png)
-
+![image4](./images/EKF.png)
