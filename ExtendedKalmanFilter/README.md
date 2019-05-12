@@ -1,7 +1,7 @@
 # Extended Kalman Filter Project
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-The goal of the project is to estimate the state of a moving object of interest with noisy lidar and radar measurements utilising the Kalman filter. 
+The goal of the project is to estimate the state of a moving object of interest with noisy lidar and radar measurements utilizing the Kalman filter. 
 
 # Prerequisites
 1. [uWebSocketIO](https://github.com/uWebSockets/uWebSockets) Git repository includes two files that can be used to set up and install for either Linux or Mac systems.
@@ -52,20 +52,13 @@ If everything works fine then the output should be as follows and the simulator 
 
 We have two datasets in the simulator namely Dataset1 and Dataset2. 
 Here is the simulator final state after running the EKL with dataset 1:
-![image4](./images/RMSE.png)
+![image2](./images/RMSE.png)
 
 
 # Accuracy
-
 The estimated values for px,py,vx,vy compared to groundtruth values are calculated using RMSE. 
-The RMSE values for Dataset1: RMSE[0.0973,0.0855,0.4513,0.4399]
+The RMSE values for Dataset1: **RMSE [0.0973,0.0855,0.4513,0.4399]**
 
-
-
-
----
-![image1](./images/KalmanFilter.png)
-![image2](./images/MeasurementUpdate.png)
-![image3](./images/RADARInit.png)
-
-
+# ExtendedKF Update step
+The predict step for extended filter looks as below:
+![image3](./images/MeasurementUpdate.png)
