@@ -20,6 +20,7 @@ Once the install for Prerequisites are complete, the main program can be built a
 
 
 **INPUT**: values provided by the simulator to the c++ program
+
 ["sensor_measurement"] => the measurement that the simulator observed (either lidar or radar)
 
 
