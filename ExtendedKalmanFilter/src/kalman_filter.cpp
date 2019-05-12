@@ -7,7 +7,7 @@ using std::atan2;
 
 /* 
  * Please note that the Eigen library does not initialize 
- *   VectorXd or MatrixXd objects with zeros upon creation.
+ * VectorXd or MatrixXd objects with zeros upon creation.
  */
 
 KalmanFilter::KalmanFilter() {}
@@ -59,7 +59,7 @@ void KalmanFilter::Predict() {
 
 void KalmanFilter::Update(const VectorXd &z) {
   /**
-   * TODO: update the state by using Kalman Filter equations
+   *update the state by using Kalman Filter equations
    */
   VectorXd z_pred = H_ * x_;
   VectorXd y  = z - z_pred;
@@ -76,7 +76,7 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
-   * TODO: update the state by using Extended Kalman Filter equations
+   *update the state by using Extended Kalman Filter equations
    */
   //To calculate y, we use the equations that map the predicted location x' from Cartesian coordinates to polar coordinates
   double px = x_(0);
